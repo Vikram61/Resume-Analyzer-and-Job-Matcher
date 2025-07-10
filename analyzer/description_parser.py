@@ -1,6 +1,11 @@
+import importlib.util
+import subprocess
 import sys
 import spacy
 
+model_name = "en_core_web_sm"
+if importlib.util.find_spec(model_name) is None: # type: ignore
+    subprocess.run(["python", "-m", "spacy", "download", model_name])
 nlp=spacy.load("en_core_web_sm")
 
 

@@ -3,6 +3,11 @@ import os
 import docx
 from pdfminer.high_level import extract_text
 import spacy
+import subprocess
+import importlib.util
+model_name = "en_core_web_sm"
+if importlib.util.find_spec(model_name) is None: # type: ignore
+    subprocess.run(["python", "-m", "spacy", "download", model_name])
 
 nlp = spacy.load("en_core_web_sm")
 
