@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import './App.css';
+
+
 function App() {
   const [file, setFile] = useState(null);
   const [response, setResponse] = useState("");
@@ -133,7 +135,7 @@ function App() {
               <p>
                 <strong>Missing Skills:</strong>{" "}
                 <span className="text-gray-700">
-                  {matchData.missingSkills.join(", ") || "None 🎉"}
+                  {matchData.missingSkills.join(", ") || "None "}
                 </span>
               </p>
             </div>
