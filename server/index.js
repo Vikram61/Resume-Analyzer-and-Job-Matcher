@@ -27,6 +27,9 @@ const storage = multer.diskStorage({
 
 const upload = multer({storage})
 
+app.get("/", (req, res) => {
+  res.send("Backend is live ");
+});
 app.post("/api/upload", upload.single("resume"),(req,res) =>{
     if(!req.file) {
         return res.status(400).json({message : "No file uploaded"});
