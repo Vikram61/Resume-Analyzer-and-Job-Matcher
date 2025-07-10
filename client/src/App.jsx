@@ -14,7 +14,7 @@ function App() {
   useEffect(() => {
     if (skills.length > 0) {
       axios
-        .post("https://resume-analyzer-and-job-matcher-9mcj.onrender.com", { resumeSkills: skills })
+        .post("https://resume-analyzer-and-job-matcher-9mcj.onrender.com/api/suggest", { resumeSkills: skills })
         .then((res) => {
           setSuggestedRoles(res.data.suggestedRoles);
         })
@@ -38,7 +38,7 @@ function App() {
     formData.append("resume", file);
 
     try {
-      const res = await axios.post("https://resume-analyzer-and-job-matcher-9mcj.onrender.com", formData);
+      const res = await axios.post("https://resume-analyzer-and-job-matcher-9mcj.onrender.com/api/upload", formData);
       setResponse(res.data.message);
       setSkills(res.data.skills || []);
     } catch (error) {
@@ -50,7 +50,7 @@ function App() {
 
   const handleMatch = async () => {
     try {
-      const res = await axios.post("https://resume-analyzer-and-job-matcher-9mcj.onrender.com", {
+      const res = await axios.post("https://resume-analyzer-and-job-matcher-9mcj.onrender.com/api/match", {
         resumeSkills: skills,
         jobDescription: jobDesc,
       });
